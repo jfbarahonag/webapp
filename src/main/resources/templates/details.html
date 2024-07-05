@@ -8,8 +8,9 @@
 <body>
   <h1 th:text="${h1Title}"></h1>
   <ul>
-    <li th:text="${username}"></li>
-    <li th:text="${age}"></li>
+    <li th:text="${user.firstName}"></li>
+    <li th:text="${user.lastName}"></li>
+    <li th:text="${user.age}"></li>
   </ul>
 </body>
 </html>
