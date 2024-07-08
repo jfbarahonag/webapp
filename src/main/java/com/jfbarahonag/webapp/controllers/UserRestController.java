@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jfbarahonag.webapp.models.User;
+import com.jfbarahonag.webapp.models.dto.UserDto;
 
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
   
-  @GetMapping("/details")
-  public Map<String, Object> details() {
+  @GetMapping("/details/map")
+  public Map<String, Object> detailsMap() {
     Map<String, Object> response = new HashMap<>();
     User user = new User("Juan Felipe", "Barahona Gonzalez", 28);
 
@@ -28,6 +29,22 @@ public class UserRestController {
     response.put("grades", grades);
     
     return response;
+  }
+  
+  @GetMapping("/details/dto")
+  public UserDto detailsDto() {
+    UserDto userDto = new UserDto();
+
+    User user = new User("Juan Felipe", "Barahona Gonzalez", 28);
+
+    List<Integer> grades = new ArrayList<>();
+    grades.add(3);
+    grades.add(3);
+
+    userDto.setUser(user);
+    userDto.setGrades(grades);
+
+    return userDto;
   }
 
 }
