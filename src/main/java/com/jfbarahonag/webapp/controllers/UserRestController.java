@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jfbarahonag.webapp.models.User;
 import com.jfbarahonag.webapp.models.dto.UserDto;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api")
@@ -49,6 +51,17 @@ public class UserRestController {
     userDto.setGrades(grades);
 
     return userDto;
+  }
+
+  @GetMapping("/users")  
+  public List<User> listUSers() {
+    List<User> users = new ArrayList<User>();
+
+    users.add(new User("Vivi", "Delgado", 27));
+    users.add(new User("Tere", "Gonzalez", 60));
+    users.add(new User("Caro", "Mora", 35));
+
+    return users;
   }
 
 }
