@@ -41,7 +41,11 @@ public class UserRestController {
     grades.add(3);
     grades.add(3);
 
-    userDto.setUser(user);
+    userDto.setFullname(
+      user.getFirstName()
+        .concat(" ")
+          .concat(user.getLastName())
+    );
     userDto.setGrades(grades);
 
     return userDto;

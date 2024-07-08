@@ -3,11 +3,9 @@ package com.jfbarahonag.webapp.models.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jfbarahonag.webapp.models.User;
-
 public class UserDto {
   private List<Integer> grades = new ArrayList<Integer>();
-  private User user;
+  private String fullname;
 
   public List<Integer> getGrades() {
     return grades;
@@ -17,11 +15,11 @@ public class UserDto {
     this.grades = grades;
   }
 
-  public User getUser() {
-    return user;
+  public String getFullname() {
+    return fullname;
   }
 
-  public void setUser(User user) {
-    this.user = user;
+  public void setFullname(String fullname) {
+    this.fullname = fullname;
   }
 }
