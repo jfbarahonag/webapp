@@ -1,6 +1,7 @@
 package com.jfbarahonag.webapp.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jfbarahonag.webapp.models.User;
 import com.jfbarahonag.webapp.models.dto.UserDto;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
 @RequestMapping("/api")
@@ -55,11 +54,11 @@ public class UserRestController {
 
   @GetMapping("/users")  
   public List<User> listUSers() {
-    List<User> users = new ArrayList<User>();
-
-    users.add(new User("Vivi", "Delgado", 27));
-    users.add(new User("Tere", "Gonzalez", 60));
-    users.add(new User("Caro", "Mora", 35));
+    List<User> users = Arrays.asList(
+      new User("Vivi", "Delgado", 27),
+      new User("Tere", "Gonzalez", 60),
+      new User("Caro", "Mora", 35)
+    );
 
     return users;
   }
