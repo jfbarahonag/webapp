@@ -11,6 +11,8 @@
     <li th:text="${user.firstName}"></li>
     <li th:text="${user.lastName}"></li>
     <li th:text="${user.age}"></li>
+    <li th:if="${user.email != null}" th:text="${user.email}"></li>
+    <li th:unless="${user.email != null}" th:text="${'No email registered'}"></li>
   </ul>
 </body>
 </html>
