@@ -1,6 +1,7 @@
 package com.jfbarahonag.webapp.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +27,9 @@ public class PathVariableController {
 
   @Value("${config.listOfEnvs}")
   private String[] listOfEnvs;
+
+  @Value("#{ '${config.listOfGrades}'.split('\\|') }")
+  private List<String> gradesList;
 
   @GetMapping("/baz/{message}")
   public ParamDto baz(@PathVariable String message) {
@@ -66,6 +70,7 @@ public class PathVariableController {
     json.put("username", username);
     json.put("message", message);
     json.put("listOfEnvs", listOfEnvs);
+    json.put("gradesList", gradesList);
 
     return json;
   }
