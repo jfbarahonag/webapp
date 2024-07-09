@@ -1,5 +1,8 @@
 package com.jfbarahonag.webapp.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,5 +20,17 @@ public class PathVariableController {
     param.setMessage(message);
 
     return param;
+  }
+
+  @GetMapping("/baz/{product}/mix/{id}")
+  public Map<String, Object> bazMix(
+    @PathVariable String product,
+    @PathVariable Long id
+  ) {
+    Map<String, Object> json = new HashMap<>();
+    json.put("product", product);
+    json.put("id", id);
+
+    return json;
   }
 }
