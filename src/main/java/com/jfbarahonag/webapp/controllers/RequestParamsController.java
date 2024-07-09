@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jfbarahonag.webapp.models.dto.ParamDto;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/api/params")
 public class RequestParamsController {
@@ -32,6 +34,24 @@ public class RequestParamsController {
     param.setCode(code);
     
     return param;
+  }
+  
+  @GetMapping("/inject")
+  public ParamDto inject(
+    HttpServletRequest request
+  ) {
+
+    ParamDto params = new ParamDto();
+
+    try {
+      params.setMessage(request.getParameter("text"));
+      params.setCode(Integer.parseInt(request.getParameter("code")));
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+
+    
+    return params;
   }
 
 }
