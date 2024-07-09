@@ -7,10 +7,18 @@ public class User {
   private String email;
   private Integer age;
 
+  public User() {
+  }
+
   public User(String firstName, String lastName, Integer age) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
+  }
+
+  public User(String firstName, String lastName, Integer age, String email) {
+    this(firstName, lastName, age);
+    this.email = email;
   }
 
   public String getFirstName() {
