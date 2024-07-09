@@ -3,6 +3,7 @@ package com.jfbarahonag.webapp.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,16 @@ import com.jfbarahonag.webapp.models.dto.ParamDto;
 @RestController
 @RequestMapping("/api/var")
 public class PathVariableController {
+
+  @Value("${config.username}")
+  private String username;
+
+  // @Value("${config.message}")
+  // private String message;
+
+  @Value("${config.listOfEnvs}")
+  private String[] listOfEnvs;
+
   @GetMapping("/baz/{message}")
   public ParamDto baz(@PathVariable String message) {
     
@@ -44,5 +55,18 @@ public class PathVariableController {
     user.setLastName(user.getLastName().toUpperCase());
 
     return user;
+  }
+
+  @GetMapping("/config")
+  public Map<String, Object> config(
+    @Value("${config.message}") String message
+  ) {
+    Map<String, Object> json = new HashMap<>();
+
+    json.put("username", username);
+    json.put("message", message);
+    json.put("listOfEnvs", listOfEnvs);
+
+    return json;
   }
 }
