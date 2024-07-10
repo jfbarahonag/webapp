@@ -14,5 +14,13 @@
     <li th:if="${user.email != null}" th:text="${user.email}"></li>
     <li th:unless="${user.email != null}" th:text="${'No email registered'}"></li>
   </ul>
+  <h1><a th:href="@{/list}">Go to the list</a></h1>
+  <h2><a th:href="@{/api/params/foo?message=Deportivo Pasto}">Go to API param (static)</a></h2>
+  <h2><a th:href="@{/api/params/foo(message='This is a static text')}">Go to API param (static) new</a></h2>
+  <h2><a th:href="@{'/api/params/foo?message=' + ${title}}">Go to API param (dynamic) old</a></h2>
+  <h2><a th:href="@{/api/params/bar(text=${title}, code=123500)}">Go to API param (dynamic) new</a></h2>
+  <hr>
+  <h2><a th:href="@{'/api/var/baz/' + ${title}}">Go to API path var (dynamic)</a></h2>
+
 </body>
 </html>
